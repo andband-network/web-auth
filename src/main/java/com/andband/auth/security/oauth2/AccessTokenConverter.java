@@ -1,22 +1,15 @@
 package com.andband.auth.security.oauth2;
 
-import com.andband.auth.config.SecurityProperties;
 import com.andband.auth.security.userdetails.UserDetails;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
 public class AccessTokenConverter extends JwtAccessTokenConverter {
-
-    public AccessTokenConverter(SecurityProperties securityProperties) {
-        setSigningKey(securityProperties.getAccessTokenSigningKey());
-    }
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {

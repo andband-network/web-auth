@@ -1,7 +1,7 @@
 package com.andband.auth.security.oauth2;
 
-import com.andband.auth.config.SecurityProperties;
 import com.andband.auth.persistence.user.Role;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,18 +21,21 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private TokenStore tokenStore;
     private TokenEnhancer tokenEnhancer;
     private PasswordEncoder passwordEncoder;
-    private SecurityProperties securityProperties;
+
+    @Value("${andband.auth.client.web.secret}")
+    private String clientWebPassword;
+
+    @Value("${andband.auth.client.internal-api.secret}")
+    private String clientInternalApiPassword;
 
     public AuthorizationServerConfig(AuthenticationManager authenticationManager,
                                      TokenStore tokenStore,
                                      TokenEnhancer tokenEnhancer,
-                                     PasswordEncoder passwordEncoder,
-                                     SecurityProperties securityProperties) {
+                                     PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.tokenStore = tokenStore;
         this.tokenEnhancer = tokenEnhancer;
         this.passwordEncoder = passwordEncoder;
-        this.securityProperties = securityProperties;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("web")
-                .secret(passwordEncoder.encode(securityProperties.getClientWebPassword()))
+                .secret(passwordEncoder.encode(clientWebPassword))
                 .authorizedGrantTypes("password")
                 .scopes("read", "write")
                 .autoApprove(true)
@@ -52,7 +55,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .refreshTokenValiditySeconds(-1)
                 .and()
                 .withClient("internal-api")
-                .secret(passwordEncoder.encode(securityProperties.getClientInternalApiPassword()))
+                .secret(passwordEncoder.encode(clientInternalApiPassword))
                 .authorizedGrantTypes("client_credentials")
                 .authorities(Role.INTERNAL_API.getName())
                 .scopes("read", "write", "trust")

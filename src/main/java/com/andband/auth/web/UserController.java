@@ -1,4 +1,4 @@
-package com.andband.auth.web.user;
+package com.andband.auth.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

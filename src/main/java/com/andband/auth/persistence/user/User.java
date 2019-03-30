@@ -21,7 +21,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "accountId", nullable = false, unique = true)
+    @Column(name = "account_id", nullable = false, unique = true)
     private String accountId;
 
     @Column(name = "role", nullable = false)

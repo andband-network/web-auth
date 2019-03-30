@@ -1,4 +1,4 @@
-package com.andband.auth.web.user;
+package com.andband.auth.web;
 
 import com.andband.auth.persistence.user.Role;
 import com.andband.auth.persistence.user.User;
