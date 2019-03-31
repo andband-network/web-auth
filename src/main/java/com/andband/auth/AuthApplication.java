@@ -23,9 +23,6 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class AuthApplication {
 
-    @Value("${andband.auth.access-token.signing-key}")
-    private String accessTokenSigningKey;
-
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class, args);
     }
@@ -41,9 +38,9 @@ public class AuthApplication {
     }
 
     @Bean
-    public TokenEnhancer tokenEnhancer() {
+    public TokenEnhancer tokenEnhancer(@Value("${andband.auth.access-token.signing-key}") String signingKey) {
         JwtAccessTokenConverter tokenEnhancer = new AccessTokenConverter();
-        tokenEnhancer.setSigningKey(accessTokenSigningKey);
+        tokenEnhancer.setSigningKey(signingKey);
         return tokenEnhancer;
     }
 
