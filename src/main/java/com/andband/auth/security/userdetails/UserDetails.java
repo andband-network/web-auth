@@ -1,6 +1,6 @@
 package com.andband.auth.security.userdetails;
 
-import com.andband.auth.persistence.user.User;
+import com.andband.auth.persistence.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

@@ -1,7 +1,7 @@
 package com.andband.auth.security.userdetails;
 
-import com.andband.auth.persistence.user.User;
-import com.andband.auth.persistence.user.UserRepository;
+import com.andband.auth.persistence.User;
+import com.andband.auth.persistence.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

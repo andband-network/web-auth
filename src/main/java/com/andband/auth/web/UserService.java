@@ -1,8 +1,8 @@
 package com.andband.auth.web;
 
-import com.andband.auth.persistence.user.Role;
-import com.andband.auth.persistence.user.User;
-import com.andband.auth.persistence.user.UserRepository;
+import com.andband.auth.persistence.Role;
+import com.andband.auth.persistence.User;
+import com.andband.auth.persistence.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

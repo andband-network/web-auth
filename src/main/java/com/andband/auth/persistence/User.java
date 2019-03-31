@@ -1,4 +1,4 @@
-package com.andband.auth.persistence.user;
+package com.andband.auth.persistence;
 
 import org.hibernate.annotations.CreationTimestamp;
 

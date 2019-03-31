@@ -1,6 +1,6 @@
 package com.andband.auth.security.oauth2;
 
-import com.andband.auth.persistence.user.Role;
+import com.andband.auth.persistence.Role;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;

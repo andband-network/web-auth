@@ -1,4 +1,4 @@
-package com.andband.auth.persistence.user;
+package com.andband.auth.persistence;
 
 public enum Role {
 
