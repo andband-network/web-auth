@@ -30,7 +30,6 @@ dependencies {
 
     runtime 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
     runtime 'org.springframework.security:spring-security-jwt:1.0.10.RELEASE'
-    
 }
 
 dependencyManagement {
