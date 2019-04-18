@@ -13,7 +13,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/oauth/**").permitAll()
                 .antMatchers("/user/**").hasAuthority(Role.INTERNAL_API.getName())
                 .anyRequest().authenticated();
     }
