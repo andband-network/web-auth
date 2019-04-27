@@ -19,7 +19,7 @@ public class AccessTokenConverter extends JwtAccessTokenConverter {
 
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
-            additionalInfo.put("accountId", userDetails.getAccountId());
+            additionalInfo.put("account_id", userDetails.getAccountId());
         }
 
         additionalInfo.put("client_id", authentication.getOAuth2Request().getClientId());
