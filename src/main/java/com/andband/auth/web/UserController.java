@@ -23,4 +23,10 @@ public class UserController {
         userService.registerUser(username, password, accountId);
     }
 
+    @PostMapping("/enable")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void registerUser(@RequestParam("accountId") String accountId) {
+        userService.enableUser(accountId);
+    }
+
 }

@@ -25,8 +25,11 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(password));
         user.setAccountId(accountId);
         user.setRoles(Collections.singletonList(Role.USER));
-        user.setEnabled(true);
         userRepository.save(user);
+    }
+
+    void enableUser(String accountId) {
+        userRepository.enableUserWhereAccountId(accountId);
     }
 
 }
