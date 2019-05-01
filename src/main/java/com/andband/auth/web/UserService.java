@@ -5,6 +5,7 @@ import com.andband.auth.persistence.User;
 import com.andband.auth.persistence.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 
@@ -28,7 +29,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    void enableUser(String accountId) {
+    @Transactional
+    public void enableUser(String accountId) {
         userRepository.enableUserWhereAccountId(accountId);
     }
 
