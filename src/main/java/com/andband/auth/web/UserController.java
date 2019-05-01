@@ -25,7 +25,7 @@ public class UserController {
 
     @PostMapping("/enable")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void registerUser(@RequestParam("accountId") String accountId) {
+    public void enableUser(@RequestParam("accountId") String accountId) {
         userService.enableUser(accountId);
     }
 
