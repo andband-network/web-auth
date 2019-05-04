@@ -34,4 +34,8 @@ public class UserService {
         userRepository.enableUserWhereAccountId(accountId);
     }
 
+    void deleteUser(String accountId) {
+        userRepository.deleteUserByAccountId(accountId);
+    }
+
 }

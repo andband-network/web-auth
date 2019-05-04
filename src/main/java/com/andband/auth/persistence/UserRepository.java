@@ -12,4 +12,6 @@ public interface UserRepository extends CrudRepository<User, String> {
     @Query("update User set enabled = true where accountId = :accountId")
     void enableUserWhereAccountId(String accountId);
 
+    void deleteUserByAccountId(String accountId);
+
 }
