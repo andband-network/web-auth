@@ -22,11 +22,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private TokenEnhancer tokenEnhancer;
     private PasswordEncoder passwordEncoder;
 
-    @Value("${andband.auth.client.web.secret}")
-    private String clientWebPassword;
+    @Value("${andband.auth.client.web.client-id}")
+    private String clientWebId;
 
-    @Value("${andband.auth.client.internal-api.secret}")
-    private String clientInternalApiPassword;
+    @Value("${andband.auth.client.web.client-secret}")
+    private String clientWebSecret;
+
+    @Value("${andband.auth.client.internal-api.client-id}")
+    private String clientInternalApiId;
+
+    @Value("${andband.auth.client.internal-api.client-secret}")
+    private String clientInternalApiSecret;
 
     public AuthorizationServerConfig(AuthenticationManager authenticationManager,
                                      TokenStore tokenStore,
@@ -46,16 +52,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("web")
-                .secret(passwordEncoder.encode(clientWebPassword))
+                .withClient(clientWebId)
+                .secret(passwordEncoder.encode(clientWebId))
                 .authorizedGrantTypes("password")
                 .scopes("read", "write")
                 .autoApprove(true)
                 .accessTokenValiditySeconds(30000)
                 .refreshTokenValiditySeconds(-1)
                 .and()
-                .withClient("internal-api")
-                .secret(passwordEncoder.encode(clientInternalApiPassword))
+                .withClient(clientInternalApiId)
+                .secret(passwordEncoder.encode(clientInternalApiId))
                 .authorizedGrantTypes("client_credentials")
                 .authorities(Role.INTERNAL_API.getName())
                 .scopes("read", "write", "trust")
