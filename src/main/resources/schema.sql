@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `created_date` datetime NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 CREATE TABLE IF NOT EXISTS `role` (
-  `user_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role` varchar(255) NOT NULL,
   KEY `FK_user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
