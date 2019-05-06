@@ -53,7 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient(clientWebId)
-                .secret(passwordEncoder.encode(clientWebId))
+                .secret(passwordEncoder.encode(clientWebSecret))
                 .authorizedGrantTypes("password")
                 .scopes("read", "write")
                 .autoApprove(true)
@@ -61,7 +61,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .refreshTokenValiditySeconds(-1)
                 .and()
                 .withClient(clientInternalApiId)
-                .secret(passwordEncoder.encode(clientInternalApiId))
+                .secret(passwordEncoder.encode(clientInternalApiSecret))
                 .authorizedGrantTypes("client_credentials")
                 .authorities(Role.INTERNAL_API.getName())
                 .scopes("read", "write", "trust")
