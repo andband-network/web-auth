@@ -14,4 +14,8 @@ public interface UserRepository extends CrudRepository<User, String> {
 
     void deleteUserByAccountId(String accountId);
 
+    @Modifying
+    @Query("update User set password = :password where accountId = :accountId")
+    void updatePasswordWhereAccountId(String password, String accountId);
+
 }

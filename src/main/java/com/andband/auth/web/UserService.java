@@ -38,4 +38,9 @@ public class UserService {
         userRepository.deleteUserByAccountId(accountId);
     }
 
+    @Transactional
+    public void updatePassword(String accountId, String password) {
+        userRepository.updatePasswordWhereAccountId(passwordEncoder.encode(password), accountId);
+    }
+
 }

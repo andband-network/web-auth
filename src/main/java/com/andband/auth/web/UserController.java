@@ -32,4 +32,10 @@ public class UserController {
         userService.deleteUser(accountId);
     }
 
+    @PostMapping(value = "/password")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatePassword(@RequestParam("accountId") String accountId, @RequestParam("password") final String password) {
+        userService.updatePassword(accountId, password);
+    }
+
 }
